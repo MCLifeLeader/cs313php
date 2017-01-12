@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Teach 02 Assignment</title>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Language" content="en-us" />
+		<meta name="Robots" content="Follow, Index" />
+		<meta name="Distribution" content="Worldwide" />
+		<meta name="Rating" content="General" />
+
+		<meta name="DESCRIPTION" content="Teach 02 Assignment. I will create an HTML page with some metadata and leverage CSS and various form and div elements then modify behavior with javascript." />
+		<meta name="KEYWORDS" content="Computer Science, CS 313, PHP, Web Engineering II, BYU-Idaho, Teach 02" />
+		<meta name="Author" content="Michael Carey" />
+		
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+		<script src="scripts/jquery-3.1.1.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+
+		<link rel="stylesheet" href="content/teach02.css" />
+		<script src="scripts/teach02.js"></script>
+
+		<script type="text/javascript" language="javascript">
+			$(document).ready(function() {
+				$("#clkChngColor2").click(function(){
+					$("#jqDiv1").css("background", $("#colorName2").val());
+				}); 
+				$("#clkToggle").click(function(){
+					$("#jqDiv3").toggle(1000);
+				}); 
+			});
+		</script>
+		
+	</head>
+	<body>
+		<div class="container body-content">	
+			<div class="row">
+				<div class="col-md-12">
+					<div class="jumbotron">
+						<h1>Teach 02 Assignment</h1>
+						<p class="lead">In this assignment I will be leveraging CSS and JavaScript and will also demonstrate changing the DOM dymanically through the use of JavaScript and jQuery.</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<h1>JavaScript</h1>					
+				</div>
+				
+				<div id="jsDiv1" class="col-md-4 boldText">
+					Here is some example text in my first div.<br />
+					<label>Alert Button: </label><button type="button" onclick="quickAlert()">Click Me</button><br />
+					<label>Color: </label> <input type="text" name="colorName" id="colorName"> <button type="button" onclick="changeColor()">Change color</button> 
+				</div>
+				<div id="jsDiv2" class="col-md-4 boldText">
+					Here is some example text in my second div.<br />
+				</div>
+				<div id="jsDiv3" class="col-md-4 boldText">
+					Here is some example text in my third div.<br />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h1>jQuery</h1>
+				</div>
+				
+				<div id="jqDiv1" class="col-md-4 boldText">
+					Here is some example text in my first div.<br />
+					<label>Color: </label> <input type="text" name="colorName2" id="colorName2"> <button id="clkChngColor2" name="clkChngColor2" type="button">Change color</button><br />
+					<label>Toggle Button: </label> <button id="clkToggle" name="clkToggle" type="button" onclick="changeColor()">Toggle Div3</button><br />
+				</div>
+				<div id="jqDiv2" class="col-md-4 boldText">
+					Here is some example text in my second div.<br />
+				</div>
+				<div id="jqDiv3" class="col-md-4 boldText">
+					Here is some example text in my third div.<br />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6">
+					<h3>Core Requirements</h3>
+					<ol class="">
+						<li class="">Create an HTML page with a head element that provides a title for your page, and links to external CSS and JavaScript files.</br>
+						On the HTML page, create 3 divs and a button labeled "Click Me".</br>
+						Add classes and/or ids to your divs, then use the CSS to set their font-size and background color. Add function in your JavaScript file to alert the text "Clicked!", and have your button call this function when it is clicked.</li>
+						<li class="">Use CSS to make it so that hovering over any of the 3 divs causes the text to temporarily become bold.</li>
+						<li class="">Make it so that the user can specify custom colors for the first div. To accomplish this, add a text box and another button labeled "Change color". Write a JavaScript function that gets invoked by clicking this button that gets the text from the textbox and sets the color of the first div.</li>
+					</ol>
+				</div>
+			
+				<div class="col-md-6">
+					<h3>Stretch Challenges</h3>
+					<ol class="">
+						<li class="">Repeat the previous step (changing the background color to the value in the box), but this time, use jQuery instead of vanilla JavaScript.</li>
+						<li class="">Add another button to toggle the visibility of the third div. Use jQuery to make it slowly fade in and fade out, rather than just turning on and off.</li>
+						<li class="">Try out Bootstrap. Use bootstrap styles to make it so that your three divs look nice, and respond well when the page is resized.</li>
+					</ol>
+				</div>
+			</div>
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,12 @@
+/*
+	Teach 02 Assignment CSS File
+	Author: Michael Carey
+*/
+div.boldText{
+	font-size: 1.2em;
+}
+
+div.boldText:hover{
+	font-weight: bold;
+}
+
