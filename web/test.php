@@ -3,7 +3,10 @@
 <body>
 
  <?php
+ 
 
+echo "Environment = " . $ENV["PAYPAL_CLIENT"] . "<br/>";
+ 
 $x = 4;
 $y = "4";
 print "1";
