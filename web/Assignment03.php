@@ -300,7 +300,7 @@
                       <div class="panel-body">
 					  
                           <div class="col-md-12">						  
-							<button type="button" class="btn" onclick="setCookieAndRedirect('visitor','javaScriptPost','365','assignment03.php')">View Survey Results</button>					  
+							<button type="button" class="btn" onclick="setCookieAndRedirect('visitor','javaScriptPost','365','Assignment03.php')">View Survey Results</button>					  
                           </div>
 						  
 						  <div class="col-md-12">
