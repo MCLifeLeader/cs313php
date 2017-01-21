@@ -93,6 +93,7 @@
 	$creditlevelErr = "";
 	$livinglocaleErr = "";
 	$timezoneErr = "";
+	$writeDb = false;
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' ) 
 	{
@@ -165,13 +166,14 @@
 				// They have voted, set the cookie
 				// Opting to use a cookie instead of a session.
 				// If they close their browser the session expires, by using a cookie it will be more persistant
-				setcookie($cookieName, $_SERVER['REMOTE_HOST'], time() + (86400 * 365), "/"); // 86400 = 1 day
+				// setcookie($cookieName, $_SERVER['REMOTE_HOST'], time() + (86400 * 365), "/"); // 86400 = 1 day
 
 				$textStr = "{ \"name\":\"".$name."\", \"email\":\"".$email."\", \"major\":\"".$majors[$major]."\", \"creditlevel\":\"".$creditlevels[$creditlevel]."\", \"livinglocale\":\"".$livinglocales[$livinglocale]."\", \"timezone\":\"".$timezones[$timezone]."\" }";
 				
 				// Write Results to the Database
 				$sql = "INSERT INTO surveylist (hostid, surveydata) VALUES ('".$_SERVER['REMOTE_HOST']."','".$textStr."')";
 				pg_query($conn, $sql);
+				$writeDb = true;
 			}
 		}
 	}
@@ -400,6 +402,12 @@
 
           <?php else: ?>
 
+		  <?php if ($writeDb): ?>
+			  <script>
+				setCookieAndRedirect('visitor','saveData','365','Assignment03.php');
+			  </script>
+		  <?php endif; ?>
+		  
           <div class="row">
               <div class="col-md-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-6 col-lg-offset-0">
                   <div class="panel panel-info" style="border-width: 2px;">

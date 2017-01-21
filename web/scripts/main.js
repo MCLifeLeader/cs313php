@@ -3,6 +3,7 @@
 	BYU-Idaho: CS-313
 */
 
+// http://www.w3schools.com/js/js_cookies.asp
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -10,6 +11,7 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+// http://www.w3schools.com/js/js_cookies.asp
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -44,4 +46,25 @@ function testCookieValueAndClearIfSame(cname,tvalue)
 	{
 		setCookie(cname, 'javaScriptPost', -1);
 	}
+}
+
+// http://stackoverflow.com/questions/14446447/javascript-read-local-text-file
+function readTextFile(file)
+{
+	var allText = "";
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                allText = rawFile.responseText;
+            }
+        }
+    }
+    rawFile.send(null);
+	
+	return allText;
 }
