@@ -3,14 +3,26 @@
 	BYU-Idaho: CS-313
 */
 
-.HomePageImage {
+.HomePageImage 
+{
 	max-height: 160px;
 	max-width: 160px;
 	border-radius: 15px 50px;
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
+
 .navbarCustom
 {
 	height: 55px;
+}
+
+.addMargins
+{
+	margin-left: 100px;
+}
+
+.centerText
+{
+	text-align: center;
 }

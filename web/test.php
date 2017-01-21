@@ -3,9 +3,6 @@
 <body>
 
  <?php
- 
-
-echo "Environment = " . getenv("PAYPAL_CLIENT") . "<br/>";
 
 $x = 4;
 $y = "4";

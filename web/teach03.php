@@ -91,7 +91,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 	<head>
-		<title>Simple Survey</title>
+		<title>Simple Survey - Group 4</title>
   
   		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -137,7 +137,7 @@
                             </div>
 
                             <label class="control-label" for="Major">Major *</label>
-                            <br>
+                            <br />
                             <?php // Build list of majors - radio buttons ?>
                             <?php foreach ($majors as $code => $name): ?>
                                 <div class="radio">
@@ -150,10 +150,10 @@
                                     <label class="control-label" for="<?php echo $code; ?>"><?php echo $name ?></label>
                                 </div>
                             <?php endforeach ?>
-                            <br>
+                            <br />
 
                             <label class="control-label" for="Continents">Continents </label>
-                            <br>
+                            <br />
                             <?php // Build list of continents - checkboxes ?>
                             <?php foreach ($continents as $code => $name): ?>
                                 <div class="checkbox">
