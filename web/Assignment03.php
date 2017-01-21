@@ -162,20 +162,16 @@
 						
 			if(!$showForm)
 			{
-				// Write Results to the Database
-				
-				$textStr = "{ \"name\":\"".$name."\", \"email\":\"".$email."\", \"major\":\"".$majors[$major]."\", \"creditlevel\":\"".$creditlevels[$creditlevel]."\", \"livinglocale\":\"".$livinglocales[$livinglocale]."\", \"timezone\":\"".$timezones[$timezone]."\" }";
-				
-				//echo "JsonStr = " . $textStr . "<br />";
-
-				$sql = "INSERT INTO surveylist (hostid, surveydata) VALUES ('".$_SERVER['REMOTE_HOST']."','".$textStr."')";
-			
-				pg_query($conn, $sql);
-				
 				// They have voted, set the cookie
 				// Opting to use a cookie instead of a session.
 				// If they close their browser the session expires, by using a cookie it will be more persistant
 				setcookie($cookieName, $_SERVER['REMOTE_HOST'], time() + (86400 * 365), "/"); // 86400 = 1 day
+
+				$textStr = "{ \"name\":\"".$name."\", \"email\":\"".$email."\", \"major\":\"".$majors[$major]."\", \"creditlevel\":\"".$creditlevels[$creditlevel]."\", \"livinglocale\":\"".$livinglocales[$livinglocale]."\", \"timezone\":\"".$timezones[$timezone]."\" }";
+				
+				// Write Results to the Database
+				$sql = "INSERT INTO surveylist (hostid, surveydata) VALUES ('".$_SERVER['REMOTE_HOST']."','".$textStr."')";
+				pg_query($conn, $sql);
 			}
 		}
 	}
@@ -237,6 +233,7 @@
 		$showForm = false;
 	}
 	
+	// clear cookie
 	//setcookie( $cookieName, $_SERVER['REMOTE_HOST'], time() - 1360, "/" ); // 86400 = 1 day
 	
 	// Close the Database connection
