@@ -4,7 +4,7 @@
 
 **************************************************************************/
 
--- The contents of this script have been REDACTED and will not be published and may only be published after it has been submitted to
+-- The contents of the schema build script have been REDACTED and will not be published and may only be published after it has been submitted to
 -- The Library of Congress for offical registered Copyright protection.
 
 /*
