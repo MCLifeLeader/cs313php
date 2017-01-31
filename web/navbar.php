@@ -24,7 +24,7 @@
 							<a style="color: white;" href="Assignment03.php" >Assignment 03</a>
 						</li>
 						<li class="">
-							<a style="color: white;" href="MLMLinkup.sql" >Assignment 03</a>
+							<a style="color: white;" href="MLMLinkup.sql" >MLMLinkup SQL Script 04</a>
 						</li>
 					</ul>
 				</li>

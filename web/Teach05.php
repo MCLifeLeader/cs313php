@@ -42,8 +42,30 @@
 <html>
   <head>
     <title>Search the scriptures!</title>
+    <!-- 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="content/main.css" />
+
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="scripts/main.js"></script>
   </head>
   <body>
+    <div class="container body-content">
+
+    <!-- Begin Navbar Include -->
+    <div id="MenuNav"></div>
+    <script>
+        document.getElementById("MenuNav").innerHTML = readTextFile( "navbar.php" );				
+    </script>
+    <!-- End Navbar Include -->
+
+    <div class="row"><div class="col-md-12"><br /><br />&nbsp;</div></div>
+    <div class="row"><div class="col-md-12">
   	<form action="" method="get">
   		<input type="text" name="scripture">
   		<br>
@@ -68,5 +90,6 @@
        	echo '<strong>' . $result["book"] . " " . $result["chapter"] . ":" . $result["verse"] . "</strong> - " . $result['content'];
       }
 		?>
+    </div></div>
   </body>
 </html>
