@@ -5,16 +5,23 @@
 	$isContent = false;
 	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $connStr = getenv("DATABASE_URL");
-        $url = parse_url($connStr);
-        $dbopts = $url;
         // If there is no database connection string from the "getenv" method then I am running on my local development machine
         if(empty($connStr)) {
-            $database = new PDO("pgsql:host=localhost port=5432 dbname=cs313Dev user=cs313 password=P@ssword123");
+            $connStr = "postgres://cs313:P@ssword123@localhost:5432/cs313Dev";
         }
-        else {
-            // Environment variable set. Use and parse the string from Heroku service
+        $url = parse_url($connStr);
+        $dbopts = $url;
+        try {
+            // Create the PDO connection
             $database = new PDO("pgsql:host=" . $dbopts['host'] . "; dbname=" . str_replace('/', '', $dbopts['path']),  $dbopts['user'], $dbopts['pass']);
         }
+        catch (PDOException $ex) {
+            // If this were in production, you would not want to echo
+            // the details of the exception.
+            echo "Error connecting to DB. Details: $ex";
+            die();
+        }
+
         $db = $database;
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         if (!empty($_GET['id'])) {
@@ -90,6 +97,7 @@
        	echo '<strong>' . $result["book"] . " " . $result["chapter"] . ":" . $result["verse"] . "</strong> - " . $result['content'];
       }
 		?>
+    
     </div></div>
   </body>
 </html>
