@@ -51,6 +51,10 @@
 						</li>
 					</ul>
 				</li>
+				<li class="divider-horizontal"></li>
+				<li>
+					<a style="color: white;" href="https://github.com/MCLifeLeader/CareyMichael_Cs313.git" target="_blank">CS 313 Git Repo</a>
+				</li>
 			</ul>
 		</div>
 	</div>
