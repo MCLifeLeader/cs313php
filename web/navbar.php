@@ -1,3 +1,8 @@
+<?php
+	$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+	$urlPath = $protocol.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
+?>
+
 <nav class="navbar navbar-inverse navbar-static-top navbar-fixed-top navbarCustom" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -25,6 +30,9 @@
 						</li>
 						<li class="">
 							<a style="color: white;" href="MLMLinkup.sql" >MLMLinkup SQL Script 04</a>
+						</li>
+						<li class="">
+							<a style="color: white;" href="<?php echo $urlPath?>/phpProject/index.php" >CS 313 PHP Project</a>
 						</li>
 					</ul>
 				</li>
