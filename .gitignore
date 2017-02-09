@@ -13,7 +13,8 @@ atlassian-ide-plugin.xml
 *.bak
 
 # Composer
-vendor
+#vendor
+#composer.lock
 composer.phar
 
 # Project
