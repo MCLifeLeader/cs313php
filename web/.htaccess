@@ -5,3 +5,16 @@ php_flag magic_quotes_gpc 1
 php_value mbstring.http_input auto
 php_value date.timezone America/Boise
 </IfModule>
+
+Options +FollowSymLinks
+RewriteEngine on
+
+<Files .htaccess>
+ order allow,deny
+ deny from all
+</Files>
+
+RewriteCond %{REQUEST_FILENAME}  !-f
+RewriteCond %{REQUEST_FILENAME}  !-d
+
+#RewriteRule ^([a-zA-Z]*)/?([a-zA-Z]*)?/?([a-zA-Z0-9]*)?/?$ ./index.php?controller=$1&action=$2&param=$3 [NC,L]
