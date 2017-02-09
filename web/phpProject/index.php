@@ -1,12 +1,19 @@
 <?php
-	$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-	$urlPath = $protocol.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
+
+	require __DIR__ . '/bootstrap.php';
+	require __DIR__ . '/common.php';
+	require __DIR__ . '/DataLayer/DbRead.php';
+
+	//echo "<br/><br/><br/><br/><br/>";
+
+	use phpProject\DataLayer\DbBase;
+	use phpProject\DataLayer\DbRead;
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>CS 313 Project</title>
+		<title>CS 313 Project - Home</title>
 
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -46,28 +53,33 @@
 				</div>
 			</div>
 
-          <div class="row">
-              <div class="col-md-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-6 col-lg-offset-0">
-                  <div class="panel panel-info" style="border-width: 2px;">
-                      <div class="panel-heading">
-                          <h3 class="panel-title" style="font-weight: bolder;">
-                              Dashboard
-                          </h3>
-                      </div>
-                      <div class="panel-body">
+			<div class="row">
+				<div class="col-md-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-6 col-lg-offset-0">
+					<div class="panel panel-info" style="border-width: 2px;">
+						<div class="panel-heading">
+							<h3 class="panel-title" style="font-weight: bolder;">
+								Dashboard
+							</h3>
+						</div>
+						<div class="panel-body">
 						<div class="row">
 							<div class="col-md-12">
+							Class Project <br/>
+							<?php 
+
+								//var_dump($var);
+							?>
 							</div>
 						</div>
-                      </div>
-                      <div class="panel-footer">
-                          <div style="font-size: smaller;">
-                              &nbsp;
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-	  </div>
+						</div>
+						<div class="panel-footer">
+							<div style="font-size: smaller;">
+								&nbsp;
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

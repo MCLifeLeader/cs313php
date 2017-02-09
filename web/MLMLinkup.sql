@@ -44,3 +44,96 @@ INSERT INTO "CountryCodeData" ("Country","Location","LocationLongName","Name","S
 INSERT INTO "CountryCodeData" ("Country","Location","LocationLongName","Name","Subdivision") VALUES ('US','PVU','','Provo','UT');
 INSERT INTO "CountryCodeData" ("Country","Location","LocationLongName","Name","Subdivision") VALUES ('US','RBI','','Rexburg','ID');
 INSERT INTO "CountryCodeData" ("Country","Location","LocationLongName","Name","Subdivision") VALUES ('US','SEA','','Seattle','WA');
+
+INSERT INTO public."AspNetUsers"
+  (
+    "Id"
+    , "Email"
+    , "EmailConfirmed"
+    , "PasswordHash"
+    , "SecurityStamp"
+    , "PhoneNumber"
+    , "PhoneNumberConfirmed"
+    , "TwoFactorEnabled"
+    , "LockoutEndDateUtc"
+    , "LockoutEnabled"
+    , "AccessFailedCount"
+    , "UserName"
+  )
+  VALUES
+  (
+      'F88987E6-60F5-4E20-A9A9-296905192A2C'
+      ,'car03009@byui.edu'
+      ,TRUE
+      ,'P@ssword123'
+      ,''
+      ,'208.201.1179'
+      ,TRUE
+      ,FALSE
+      ,'2017-01-01'
+      ,FALSE
+      ,0
+      ,'car03009@byui.edu'
+  );
+
+INSERT INTO public."AspNetUsers"
+  (
+    "Id"
+    , "Email"
+    , "EmailConfirmed"
+    , "PasswordHash"
+    , "SecurityStamp"
+    , "PhoneNumber"
+    , "PhoneNumberConfirmed"
+    , "TwoFactorEnabled"
+    , "LockoutEndDateUtc"
+    , "LockoutEnabled"
+    , "AccessFailedCount"
+    , "UserName"
+  )
+  VALUES
+  (
+      'F88987E6-60F5-4E20-A9A9-296905192A2D'
+      ,'kb7ppb@hotmail.com'
+      ,TRUE
+      ,'P@ssword123'
+      ,''
+      ,'208.201.1179'
+      ,TRUE
+      ,FALSE
+      ,'2017-01-01'
+      ,FALSE
+      ,0
+      ,'kb7ppb@hotmail.com'
+  );
+
+INSERT INTO public."AspNetUsers"
+  (
+    "Id"
+    , "Email"
+    , "EmailConfirmed"
+    , "PasswordHash"
+    , "SecurityStamp"
+    , "PhoneNumber"
+    , "PhoneNumberConfirmed"
+    , "TwoFactorEnabled"
+    , "LockoutEndDateUtc"
+    , "LockoutEnabled"
+    , "AccessFailedCount"
+    , "UserName"
+  )
+  VALUES
+  (
+      'F88987E6-60F5-4E20-A9A9-296905192A2E'
+      ,'kb7ppb@gmail.com'
+      ,TRUE
+      ,'P@ssword123'
+      ,''
+      ,'208.201.1179'
+      ,TRUE
+      ,FALSE
+      ,'2017-01-01'
+      ,FALSE
+      ,0
+      ,'kb7ppb@gmail.com'
+  );

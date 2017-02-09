@@ -49,6 +49,9 @@
 						<li class="">
 							<a style="color: white;" href="Teach05.php" >Teach 05</a>
 						</li>
+						<li class="">
+							<a style="color: white;" href="Teach06.php" >Teach 06</a>
+						</li>
 					</ul>
 				</li>
 				<li class="divider-horizontal"></li>

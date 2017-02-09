@@ -1,3 +1,13 @@
+<?php 
+
+	if ( is_session_started() === FALSE ) {
+		session_start();
+	}
+
+	//$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+	//$urlPath = $protocol.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
+?>
+
 <nav class="navbar navbar-inverse navbar-static-top navbar-fixed-top navbarCustom" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -27,6 +37,18 @@
 							<a style="color: white;" href="paypal.php" >PayPal</a>
 						</li>
 					</ul>
+				</li>
+				<li class="divider-horizontal"></li>
+				<li>
+				<?php if($_SESSION["IsLoggedIn"] == true)
+				{
+					echo "<a style=\"color: white;\" href=\"logout.php\">Logout</a>";
+				}				
+				else
+				{
+					echo "<a style=\"color: white;\" href=\"login.php\">Login</a>";
+				}
+				?>					
 				</li>
 			</ul>
 		</div>

@@ -1,12 +1,17 @@
-<?php echo $urlPath?><?php
-	$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-	$urlPath = $protocol.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
-?>
+<?php
+	require __DIR__ . '/bootstrap.php';
+	require __DIR__ . '/common.php';
+	require __DIR__ . '/DataLayer/DbRead.php';
 
+	//echo "<br/><br/><br/><br/><br/>";
+
+	use phpProject\DataLayer\DbBase;
+	use phpProject\DataLayer\DbRead;
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>CS 313 Project</title>
+		<title>CS 313 Project - Images</title>
 
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -41,40 +46,43 @@
 				<div class="col-md-12">
 					<div class="jumbotron">
 						<h1>CS 313 Main Project</h1>
-						<h2>Working with Image blob data from PostgreSQL</h2>
+						<h2>Working with Image Blob data from PostgreSQL</h2>
 					</div>
 				</div>
 			</div>
 
-          <div class="row">
-              <div class="col-md-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-6 col-lg-offset-0">
-                  <div class="panel panel-info" style="border-width: 2px;">
-                      <div class="panel-heading">
-                          <h3 class="panel-title" style="font-weight: bolder;">
-                              Survey Results
-                          </h3>
-                      </div>
-                      <div class="panel-body">
+			<div class="row">
+				<div class="col-md-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-6 col-lg-offset-0">
+					<div class="panel panel-info" style="border-width: 2px;">
+						<div class="panel-heading">
+							<h3 class="panel-title" style="font-weight: bolder;">
+								Image Demo
+							</h3>
+						</div>
+						<div class="panel-body">
 						<div class="row">
 							<div class="col-md-12">
-								<table>
-								<tr>
-									<th><span>Question</span></th>
-									<th><span class="addMargins">Result Counts</span></th>
-								</tr>
-								<tr><td colspan="2"><hr /></td></tr>
-								</table>
+								<form action="" method="post">
+									<div class="form-group" title="Search" style="text-align: left;">
+										<label class="control-label">Search</label>
+										<input id="Search" class="form-control text-box single-line" name="Search" placeholder="Search" title="Search" value="" type="text">
+										<br />
+									</div>
+									<div class="form-group">
+										<input class="btn btn-primary" value="Search" title="Search." type="submit">
+									</div>
+								</form>
 							</div>
 						</div>
-                      </div>
-                      <div class="panel-footer">
-                          <div style="font-size: smaller;">
-                              &nbsp;
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-	  </div>
+						</div>
+						<div class="panel-footer">
+							<div style="font-size: smaller;">
+								&nbsp;
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
