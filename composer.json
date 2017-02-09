@@ -2,7 +2,7 @@
     "name": "phpProject/cs313",
     "description": "BYU-Idaho cs313 Class",
     "keywords": ["BYU-Idaho", "cs313", "Class", "Project"],
-    "type": "library",
+    "type": "cs313project",
     "license": "GNU GENERAL PUBLIC LICENSE-V3",
     "homepage": "https://evening-dawn-85312.herokuapp.com/",
     "authors": [
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-0": {
-            "PayPal": "lib/",
+            "PayPal": "web/lib/",
             "DataLayer": "web/phpProject/DataLayer/"
         }
     }
