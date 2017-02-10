@@ -5,7 +5,6 @@
   // If there is no database connection string from the "getenv" method then I am running on my local development machine
   if(empty($connStr)) {
     $connStr = "postgres://cs313:P@ssword123@localhost:5432/cs313Dev";
-    //$connStr = "postgres://qvtwllccjytdzv:161e59a883efbf5c828d87bb2e516e1280b9271a4459dbe723ecc90db3538c88@ec2-54-235-92-236.compute-1.amazonaws.com:5432/d2ok4dig0dekbv";
   }
   $url = parse_url($connStr);
   $dbopts = $url;
@@ -22,7 +21,7 @@
   $db = $database;
   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$sql = $db->prepare("SELECT DISTINCT s.id, s.book, s.chapter, s.verse, s.content FROM scriptures s "
+  $sql = $db->prepare("SELECT DISTINCT s.id, s.book, s.chapter, s.verse, s.content FROM scriptures s "
                       ."JOIN scripture_topic st ON st.scripture_id = s.id "
                       ."JOIN topic t ON t.id = st.topic_id");
   $sql->execute();

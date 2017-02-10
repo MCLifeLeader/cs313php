@@ -1,15 +1,10 @@
-<?php
-  error_reporting(E_ALL);
-  ini_set("display_errors", 1);
-//   $scripture = "";
-//   $isContent = false;
+<?php 
 
   // Database connection
   $connStr = getenv("DATABASE_URL");
   // If there is no database connection string from the "getenv" method then I am running on my local development machine
   if(empty($connStr)) {
     $connStr = "postgres://cs313:P@ssword123@localhost:5432/cs313Dev";
-    //$connStr = "postgres://qvtwllccjytdzv:161e59a883efbf5c828d87bb2e516e1280b9271a4459dbe723ecc90db3538c88@ec2-54-235-92-236.compute-1.amazonaws.com:5432/d2ok4dig0dekbv";
   }
   $url = parse_url($connStr);
   $dbopts = $url;
@@ -26,71 +21,33 @@
   $db = $database;
   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  $sql_topics = $db->prepare("SELECT * FROM topic");
-  $sql_topics->execute();
-  $topics = $sql_topics->fetchAll();
-
-
-    if (
-      !empty($_POST["book"]) &&
-      !empty($_POST["chapter"]) &&
-      !empty($_POST["verse"]) &&
-      !empty($_POST["content"]) &&
-      !empty($_POST["topics"])
-    ) {
-      $newTopic = false;
-      if (!empty($_POST["new"]) && !empty($_POST["newTopic"])) {
-        $sql = $db->prepare("INSERT INTO topic ("
-                              ."name"
-                            .") VALUES ("
-                              .":newTopic"
-                            .")");
-        $sql->execute(array(
-          ":newTopic" => $_POST["newTopic"]
-        ));
-        $newTopic = true;
-        $newTopic_id = $db->lastInsertId('topic_id_seq');
+  $sql = $db->prepare("SELECT DISTINCT s.id, s.book, s.chapter, s.verse, s.content FROM scriptures s "
+                      ."JOIN scripture_topic st ON st.scripture_id = s.id "
+                      ."JOIN topic t ON t.id = st.topic_id");
+  $sql->execute();
+  $sResult = $sql->fetchAll();
+  $sql = $db->prepare("SELECT t.name, st.scripture_id FROM scriptures s "
+                      ."JOIN scripture_topic st ON st.scripture_id = s.id "
+                      ."JOIN topic t ON t.id = st.topic_id");
+  $sql->execute();
+  $tResult = $sql->fetchAll();
+	
+  // build scriptures return string.
+  // this is ugly, but it's just the php-ized version of the html/php loop we were doing before.
+  $ajaxResult = "";
+  foreach($sResult as $script) {
+    $ajaxResult .= "<div class='scripture'><label><strong>";
+    $ajaxResult .= ($script['book'] . " " . $script['chapter'] . ":" . $script['verse']);
+    $ajaxResult .= "</strong></label>";
+    $ajaxResult .= "<p>" . $script['content'] . "</p>";
+    $ajaxResult .= "<p><ul>";
+    foreach($tResult as $topic) {
+      if($topic["scripture_id"] == $script["id"]) {
+        $ajaxResult .= '<li>' . $topic['name'] . '</li>';
       }
-          
-      $sql = $db->prepare("INSERT INTO scriptures ("
-      ."book, "
-      ."chapter, "
-      ."verse, "
-      ."content"
-      .") VALUES ("
-      .":book, "
-      .":chapter, "
-      .":verse, "
-      .":content"
-      .")");
-      $sql->execute(array(
-        ":book" => $_POST["book"],
-        ":chapter" => $_POST["chapter"],
-        ":verse" => $_POST["verse"],
-        ":content" => $_POST["content"]
-      ));
-
-      // Insert a new scripture
-      // Get its id number (does it need a parameter?)
-      $scripture_id = $db->lastInsertId('scriptures_id_seq');
-
-      // Insert topics using id number
-      $inserts = array();
-      foreach ($_POST["topics"] as $topic_id) {
-        array_push($inserts, "('$scripture_id', '$topic_id')");
-      }
-      if ($newTopic) {
-        array_push($inserts, "('$scripture_id', '$newTopic_id')");
-      }
-      $topic_insert_query = "INSERT INTO scripture_topic (scripture_id, topic_id) VALUES ";
-      $topic_insert_query .= implode(", ", $inserts);
-      $topic_insertion = $db->prepare($topic_insert_query);
-      $topic_insertion->execute();
-      
-      $showForm = false;
-    } else {
-      echo "Put data into all the fields fool. (Mr. T)";
     }
-
+    $ajaxResult .= "</ul></p></div>";
+  }
   $database = null;
+  echo $ajaxResult;
 ?>
