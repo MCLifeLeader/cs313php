@@ -1,13 +1,10 @@
 <?php
 
-	require __DIR__ . '/bootstrap.php';
-	require __DIR__ . '/common.php';
-	require __DIR__ . '/DataLayer/DbRead.php';
-
 	//echo "<br/><br/><br/><br/><br/>";
 
-	use phpProject\DataLayer\DbBase;
-	use phpProject\DataLayer\DbRead;
+	require_once __DIR__ . '/bootstrap.php';
+	require_once __DIR__ . '/common.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -66,8 +63,7 @@
 							<div class="col-md-12">
 							Class Project <br/>
 							<?php 
-
-								//var_dump($var);
+									echo "Content<br/>";
 							?>
 							</div>
 						</div>

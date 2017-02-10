@@ -1,7 +1,7 @@
 <?php
-	require __DIR__ . '/bootstrap.php';
-	require __DIR__ . '/common.php';
-	require __DIR__ . '/DataLayer/DbRead.php';
+	require_once __DIR__ . '/bootstrap.php';
+	require_once __DIR__ . '/common.php';
+	require_once __DIR__ . '/DataLayer/DbRead.php';
 
 	//echo "<br/><br/><br/><br/><br/>";
 

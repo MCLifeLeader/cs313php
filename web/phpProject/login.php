@@ -1,27 +1,29 @@
 <?php
-	require __DIR__ . '/bootstrap.php';
-	require __DIR__ . '/common.php';
-	require __DIR__ . '/DataLayer/DbRead.php';
+	require_once __DIR__ . '/bootstrap.php';
+	require_once __DIR__ . '/common.php';
+	require_once __DIR__ . '/DataLayer/DbRead.php';
+	require_once __DIR__ . '/Models/AspNetUser.php';
 
 	use phpProject\DataLayer\DbBase;
 	use phpProject\DataLayer\DbRead;
+	use phpProject\Models\AspNetUser;
 	$userMessage = "";
 
-  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if ( !empty($_POST["Username"]) && !empty($_POST["Password"]) ) {
-		$reader = new DbRead();
-		$var = $reader->GetUser($_POST["Username"]);
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		if ( !empty($_POST["Username"]) && !empty($_POST["Password"]) ) {
+			$reader = new DbRead();
+			$var = $reader->GetUser($_POST["Username"]);
 
-		if(!empty($var) && $var[0]['PasswordHash'] == $_POST["Password"]) {
-			$_SESSION["IsLoggedIn"] = true;
-			$userMessage = " - Success";
-			header("Location: index.php"); /* Redirect browser */
+			if(!empty($var) && $var->PasswordHash == $_POST["Password"]) {
+				$_SESSION["IsLoggedIn"] = true;
+				$userMessage = " - Success";
+				header("Location: index.php"); /* Redirect browser */
+			}
+			else {
+				$userMessage = " - Invalid Username or Password";
+			}
 		}
-		else {
-			$userMessage = " - Invalid Username or Password";
-		}
-    }
-  }
+	}
 ?>
 
 <!DOCTYPE html>

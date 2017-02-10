@@ -1,9 +1,11 @@
 <?php 
 namespace phpProject\DataLayer;
 
-require 'DbBase.php';
+require_once (dirname(__FILE__).'/../Models/AspNetUser.php');
+require_once 'DbBase.php';
 
 use phpProject\DataLayer\DbBase;
+use phpProject\Models\AspNetUser;
 
 class DbRead extends DbBase
 {
@@ -35,8 +37,21 @@ class DbRead extends DbBase
         $sql->execute();
         $results = $sql->fetchAll();
 
+        $aspNetUser = new AspNetUser();
+        $aspNetUser->Id = $results[0]['Id'];
+        $aspNetUser->Email = $results[0]['Email'];
+        $aspNetUser->EmailConfirmed = $results[0]['EmailConfirmed'];
+        $aspNetUser->PasswordHash = $results[0]['PasswordHash'];
+        $aspNetUser->SecurityStamp = $results[0]['SecurityStamp'];
+        $aspNetUser->PhoneNumber = $results[0]['PhoneNumber'];
+        $aspNetUser->PhoneNumberConfirmed = $results[0]['PhoneNumberConfirmed'];
+        $aspNetUser->TwoFactorEnabled = $results[0]['TwoFactorEnabled'];
+        $aspNetUser->LockoutEnabled = $results[0]['LockoutEnabled'];
+        $aspNetUser->AccessFailedCount = $results[0]['AccessFailedCount'];
+        $aspNetUser->UserName = $results[0]['UserName'];
+
         $this->dbHandler->Close();
 
-        return $results;
+        return $aspNetUser;
     }
 }

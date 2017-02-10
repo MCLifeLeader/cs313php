@@ -1,7 +1,7 @@
 <?php 
 namespace phpProject\DataLayer;	
 
-require 'DbConnHandler.php';
+require_once 'DbConnHandler.php';
 
 use phpProject\DataLayer\DbConnHandler;
 
