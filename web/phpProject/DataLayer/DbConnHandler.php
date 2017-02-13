@@ -11,26 +11,22 @@ class DbConnHandler
 	// Open database connection
 	public function Open()
 	{
-		if (empty($this->dbConn) || $this->dbConn == null)
-		{
+		if (empty($this->dbConn) || $this->dbConn == null) {
 			// Database connection string from ENV variable
 			$this->connStr = getenv("DATABASE_URL");
 			// If there is no database connection string from the "getenv" method then I am running on my local development machine
-			if (empty($this->connStr))
-			{
+			if (empty($this->connStr)) {
 				$this->connStr = "postgres://cs313:P@ssword123@localhost:5432/MLMLinkupData";
 			}
 
 			$url = parse_url($this->connStr);
 			$dbopts = $url;
 
-			try
-			{
+			try {
 				// Create the PDO connection
 				$this->dbConn = new PDO("pgsql:host=" . $dbopts['host'] . "; dbname=" . str_replace('/', '', $dbopts['path']),  $dbopts['user'], $dbopts['pass']);
 			}
-			catch (PDOException $ex)
-			{
+			catch (PDOException $ex) {
 				// If this were in production, you would not want to echo
 				// the details of the exception.
 				echo "Error connecting to DB. Details: $ex";

@@ -2,10 +2,12 @@
 	require_once __DIR__ . '/bootstrap.php';
 	require_once __DIR__ . '/common.php';
 	require_once __DIR__ . '/DataLayer/DbRead.php';
+	require_once __DIR__ . '/DataLayer/DbInsert.php';
 	require_once __DIR__ . '/Models/AspNetUser.php';
 
 	use phpProject\DataLayer\DbBase;
 	use phpProject\DataLayer\DbRead;
+	use phpProject\DataLayer\DbInsert;
 	use phpProject\Models\AspNetUser;
 
 	$userMessage = "";
@@ -13,17 +15,55 @@
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if ( !empty($_POST["Username"]) && !empty($_POST["Password"]) ) {
 			$reader = new DbRead();
-			$aspNetUser = $reader->GetUser($_POST["Username"]);
+			$var = $reader->GetUser($_POST["Username"]);
 
-			if(!empty($aspNetUser) && $aspNetUser->PasswordHash == $_POST["Password"]) {
-				$_SESSION["IsLoggedIn"] = true;
-				$_SESSION["Username"] = $_POST["Username"];
-				$userMessage = " - Success";
-				header("Location: index.php"); /* Redirect browser */
+			if(!empty($var) && $var->UserName == $_POST["Username"]) {
+				$userMessage = " - Username already in Use. Please enter a new Username.";
+			}
+			else if(empty($_POST["Password"]) || empty($_POST["ConfirmPassword"]) || $_POST["Password"] != $_POST["ConfirmPassword"]) {
+				$userMessage = " - Password does not Match or is Empty";
 			}
 			else {
-				$userMessage = " - Invalid Username or Password";
+				$aspNetUser = new AspNetUser();
+				$aspNetUser->Email = $_POST["Username"];
+				$aspNetUser->EmailConfirmed = false;
+				$aspNetUser->PasswordHash = $_POST["Password"];
+				$aspNetUser->SecurityStamp = null;
+				$aspNetUser->PhoneNumber = $_POST["PhoneNumber"];
+				$aspNetUser->PhoneNumberConfirmed = false;
+				$aspNetUser->TwoFactorEnabled = false;
+				$aspNetUser->LockoutEnabled = false;
+				$aspNetUser->AccessFailedCount = 0;
+				$aspNetUser->UserName = $_POST["Username"];
+
+				try {
+					$inserter = new DbInsert();
+					$inserter->InsertUser($aspNetUser);
+					$userMessage = " - Account Created Successfully";
+				}
+				catch (PDOException $ex) {
+					$userMessage = $ex . $_POST["Username"];
+				}
 			}
+
+			//if(!empty($var) && $var->PasswordHash == $_POST["Password"]) {
+				
+				// update
+				//$var->AccessFailedCount = 5;
+				//$updater = new DbUpdate();
+				//$updater->UpdateUser($var);
+
+				// insert
+				//$var->Email = "newEmail".random_int(0,2000000000)."@example.com";
+				//$var->UserName = $var->Email;
+
+				//$_SESSION["IsLoggedIn"] = true;
+				//$userMessage = " - Success";
+				//header("Location: index.php"); /* Redirect browser */
+			//}
+			//else {
+				//$userMessage = " - Invalid Username or Password";
+			//}
 		}
 	}
 ?>
@@ -31,7 +71,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>CS 313 Project - Login</title>
+		<title>CS 313 Project - Register</title>
 
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -65,8 +105,8 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="jumbotron">
-						<h1>Login</h1>
-						<h2>Enter Username and Password</h2>
+						<h1>Register</h1>
+						<h2>Please Register to Login to our Site</h2>
 					</div>
 				</div>
 			</div>
@@ -76,7 +116,7 @@
                   <div class="panel panel-info" style="border-width: 2px;">
                       <div class="panel-heading">
                           <h3 class="panel-title" style="font-weight: bolder;">
-                              Login <?=$userMessage?>
+                              Register <?=$userMessage?>
                           </h3>
                       </div>
                       <div class="panel-body">
@@ -87,12 +127,20 @@
 										<label class="control-label">Username</label>
 										<input id="Username" class="form-control text-box single-line" name="Username" placeholder="Username" title="Username" value="" type="text">
 									</div>
+									<div class="form-group" title="Phone Number" style="text-align: left;">
+										<label class="control-label">Phone Number</label>
+										<input id="PhoneNumber" class="form-control text-box single-line" name="PhoneNumber" placeholder="Phone Number" title="Phone Number" value="" type="text">
+									</div>
 									<div class="form-group" title="Enter Your Password" style="text-align: left;">
 										<label class="control-label">Password</label>
 										<input id="Password" class="form-control text-box single-line" name="Password" placeholder="Password" title="Password" value="" type="password">
 									</div>
+									<div class="form-group" title="Enter Your Password" style="text-align: left;">
+										<label class="control-label">Confirm Password</label>
+										<input id="ConfirmPassword" class="form-control text-box single-line" name="ConfirmPassword" placeholder="Confirm Password" title="Confirm Password" value="" type="password">
+									</div>
 									<div class="form-group">
-										<input class="btn btn-primary" value="Login" title="Login" type="submit">
+										<input class="btn btn-primary" value="Enroll" title="Enroll" type="submit">
 									</div>
 								</form>
 							</div>

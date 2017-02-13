@@ -1,37 +1,57 @@
 <?php 
 namespace phpProject\DataLayer;
 
+
 require_once (dirname(__FILE__).'/../Models/AspNetUser.php');
+require_once (dirname(__FILE__).'/../Helpers/Strings.php');
 require_once 'DbBase.php';
 
 use phpProject\DataLayer\DbBase;
+use phpProject\Helpers\Strings;
 use phpProject\Models\AspNetUser;
 use \PDO;
-	
-class DbUpdate extends DbBase
+
+class DbInsert extends DbBase
 {
     function __construct() 
     {
         parent::__construct();        
     }
 
-    function UpdateUser($aspNetUser)
+    function InsertUser($aspNetUser)
     {
         $this->dbHandler->Open();
-
-        $query = "UPDATE \"AspNetUsers\" SET
-        \"Email\" = :Email
-        , \"EmailConfirmed\" = :EmailConfirmed
-        , \"PasswordHash\" = :PasswordHash
-        , \"SecurityStamp\" = :SecurityStamp
-        , \"PhoneNumber\" = :PhoneNumber
-        , \"PhoneNumberConfirmed\" = :PhoneNumberConfirmed
-        , \"TwoFactorEnabled\" = :TwoFactorEnabled
-        , \"LockoutEndDateUtc\" = :LockoutEndDateUtc
-        , \"LockoutEnabled\" = :LockoutEnabled
-        , \"AccessFailedCount\" = :AccessFailedCount
-        , \"UserName\" = :UserName
-        WHERE \"UserName\" = :UserName";
+        
+        $query = "INSERT INTO \"AspNetUsers\"
+        ( 
+            \"Id\"
+            , \"Email\"
+            , \"EmailConfirmed\"
+            , \"PasswordHash\"
+            , \"SecurityStamp\"
+            , \"PhoneNumber\"
+            , \"PhoneNumberConfirmed\"
+            , \"TwoFactorEnabled\"
+            , \"LockoutEndDateUtc\"
+            , \"LockoutEnabled\"
+            , \"AccessFailedCount\"
+            , \"UserName\"
+        )
+        VALUES
+        (
+            '" . Strings::GUID() . "'
+            , :Email
+            , :EmailConfirmed
+            , :PasswordHash
+            , :SecurityStamp
+            , :PhoneNumber
+            , :PhoneNumberConfirmed
+            , :TwoFactorEnabled
+            , :LockoutEndDateUtc
+            , :LockoutEnabled
+            , :AccessFailedCount
+            , :UserName
+        )";
 
         $sql = $this->dbHandler->dbConn->prepare($query);
 
@@ -46,8 +66,8 @@ class DbUpdate extends DbBase
         $sql->bindValue( ":LockoutEnabled", $aspNetUser->LockoutEnabled, PDO::PARAM_BOOL );
         $sql->bindValue( ":AccessFailedCount", $aspNetUser->AccessFailedCount, PDO::PARAM_INT );
         $sql->bindValue( ":UserName", $aspNetUser->UserName, PDO::PARAM_STR );
-
-        //echo $sql->debugDumpParams();
+        
+        // echo $sql->debugDumpParams();
 
         $sql->execute();
         $this->dbHandler->Close();

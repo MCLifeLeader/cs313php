@@ -36,7 +36,15 @@
 <html>
 <head>
   <title>Search the scriptures!</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="content/main.css" />
+
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="scripts/main.js"></script>
+<!-- 
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+-->
   <script>
     $(function() { // on page load
       
@@ -69,6 +77,18 @@
   </script>
 </head>
 <body>
+    <div class="container body-content">
+
+    <!-- Begin Navbar Include -->
+    <div id="MenuNav"></div>
+    <script>
+        document.getElementById("MenuNav").innerHTML = readTextFile( "navbar.php" );
+    </script>
+    <!-- End Navbar Include -->
+
+    <div class="row"><div class="col-md-12"><br /><br />&nbsp;</div></div>
+    <div class="row"><div class="col-md-12">
+
     <form id="form" action="" method="post">
       <label for="book">Book Name:</label>
       <input type="text" name="book" id="book" placeholder="Book Name">
@@ -97,5 +117,6 @@
     <hr>
   
     <div id="results" ></div>
+    </div></div>
   </body>
 </html>

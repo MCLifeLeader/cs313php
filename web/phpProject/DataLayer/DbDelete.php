@@ -4,6 +4,7 @@ namespace phpProject\DataLayer;
 require_once 'DbBase.php';
 
 use phpProject\DataLayer\DbBase;
+use \PDO;
 
 class DbDelete extends DbBase
 {

@@ -9,4 +9,5 @@ return array(
     'PayPal' => array($baseDir . '/lib'),
     'DataLayer' => array($baseDir . '/web/phpProject/DataLayer'),
     'Models' => array($baseDir . '/web/phpProject/Models'),
+    'Helpers' => array($baseDir . '/web/phpProject/Helpers'),
 );

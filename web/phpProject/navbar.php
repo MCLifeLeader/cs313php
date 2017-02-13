@@ -39,16 +39,26 @@
 					</ul>
 				</li>
 				<li class="divider-horizontal"></li>
-				<li>
-				<?php if($_SESSION["IsLoggedIn"] == true)
-				{
-					echo "<a style=\"color: white;\" href=\"logout.php\">Logout</a>";
-				}				
-				else
-				{
-					echo "<a style=\"color: white;\" href=\"login.php\">Login</a>";
-				}
-				?>					
+				<li class="">
+					<?php if($_SESSION["IsLoggedIn"] == false)
+					{
+						echo "<a style=\"color: white;\" href=\"register.php\">Register</a>";
+					}
+					else {
+						echo "<a style=\"color: white;\" href=\"profile.php\">Profile</a>";
+					}
+					?>
+				</li>
+				<li class="">
+					<?php if($_SESSION["IsLoggedIn"] == true)
+					{
+						echo "<a style=\"color: white;\" href=\"logout.php\">Logout</a>";
+					}				
+					else
+					{
+						echo "<a style=\"color: white;\" href=\"login.php\">Login</a>";
+					}
+					?>					
 				</li>
 			</ul>
 		</div>
