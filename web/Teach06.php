@@ -36,45 +36,42 @@
 <html>
 <head>
   <title>Search the scriptures!</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="content/main.css" />
+		<script src="scripts/jquery-3.1.1.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="scripts/main.js"></script>
 
-    <script src="scripts/jquery-3.1.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="scripts/main.js"></script>
-<!-- 
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
--->
-  <script>
-    $(function() { // on page load
-      
-      loadScriptures();// load scriptures
-      
-      // add click event to form submit button
-      $('#submitButton').on('click', function(e) {
-        e.preventDefault(); // prevent submission of form
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="content/main.css" />
+    <script>
+      $(function() { // on page load
         
-        var form = $('#form'); // get form
+        loadScriptures();// load scriptures
+        
+        // add click event to form submit button
+        $('#submitButton').on('click', function(e) {
+          e.preventDefault(); // prevent submission of form
+          
+          var form = $('#form'); // get form
 
-        // JQeury Ajax post to submitScripture.php
-        // the .serialize() function creates a post string from the data in the form.
-        $.post('submitScripture.php', form.serialize())
-        .always(function(data) { // always runs at the end of the ajax, regardless of status
-          console.log(data); // display result to console
-          loadScriptures(); // reload the scriptures
+          // JQeury Ajax post to submitScripture.php
+          // the .serialize() function creates a post string from the data in the form.
+          $.post('submitScripture.php', form.serialize())
+          .always(function(data) { // always runs at the end of the ajax, regardless of status
+            console.log(data); // display result to console
+            loadScriptures(); // reload the scriptures
+          });
         });
       });
-    });
     
-    // load scriptures function
-    var loadScriptures = function() {
-      // JQuery ajax GET from getScriptures.php
-      $.get('getScriptures.php').always(
-        function(data) { 
-          $('#results').html(data); // Set the resulting string as the html content of the #results element
-      });
-    };
-  </script>
+      // load scriptures function
+      var loadScriptures = function() {
+        // JQuery ajax GET from getScriptures.php
+        $.get('getScriptures.php').always(
+          function(data) { 
+            $('#results').html(data); // Set the resulting string as the html content of the #results element
+        });
+      };
+    </script>
 </head>
 <body>
     <div class="container body-content">

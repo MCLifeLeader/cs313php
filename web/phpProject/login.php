@@ -20,6 +20,7 @@
 				$_SESSION["Username"] = $_POST["Username"];
 				$userMessage = " - Success";
 				header("Location: index.php"); /* Redirect browser */
+				die();
 			}
 			else {
 				$userMessage = " - Invalid Username or Password";
