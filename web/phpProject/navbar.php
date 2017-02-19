@@ -25,7 +25,11 @@
 					<a style="color: white;" class="dropdown-toggle" data-toggle="dropdown" role="button"> Database Blobs Demo <span class="caret"></span></a>
 					<ul class="dropdown-menu navbar-inverse" role="menu">
 						<li class="">
-							<a style="color: white;" href="images.php" >Images</a>
+							<?php if($_SESSION["IsLoggedIn"] == true)
+							{
+								echo "<a style=\"color: white;\" href=\"images.php\">Images</a>";
+							}
+							?>
 						</li>
 					</ul>
 				</li>
@@ -34,18 +38,22 @@
 					<a style="color: white;" class="dropdown-toggle" data-toggle="dropdown" role="button"> PayPal Demo <span class="caret"></span></a>
 					<ul class="dropdown-menu navbar-inverse" role="menu">
 						<li class="">
-							<a style="color: white;" href="paypal.php" >PayPal</a>
+							<?php if($_SESSION["IsLoggedIn"] == true)
+							{
+								echo "<a style=\"color: white;\" href=\"paypal.php\">PayPal</a>";
+							}
+							?>
 						</li>
 					</ul>
 				</li>
 				<li class="divider-horizontal"></li>
 				<li class="">
-					<?php if($_SESSION["IsLoggedIn"] == false)
+					<?php if($_SESSION["IsLoggedIn"] == true)
 					{
-						echo "<a style=\"color: white;\" href=\"register.php\">Register</a>";
+						echo "<a style=\"color: white;\" href=\"profile.php\">Profile</a>";
 					}
 					else {
-						echo "<a style=\"color: white;\" href=\"profile.php\">Profile</a>";
+						echo "<a style=\"color: white;\" href=\"register.php\">Register</a>";
 					}
 					?>
 				</li>
