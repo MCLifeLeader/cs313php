@@ -6,7 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'PayPal' => array($baseDir . '/lib'),
+    'PayPal' => array($baseDir . '/web/lib'),
     'Models' => array($baseDir . '/web/phpProject/Models'),
     'Helpers' => array($baseDir . '/web/phpProject/Helpers'),
     'DataLayer' => array($baseDir . '/web/phpProject/DataLayer'),

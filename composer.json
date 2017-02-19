@@ -21,7 +21,8 @@
         "psr-0": {
             "PayPal": "web/lib/",
             "DataLayer": "web/phpProject/DataLayer/",
-            "Models": "web/phpProject/Models/"
+            "Models": "web/phpProject/Models/",
+			"Helpers": "web/phpProject/Helpers"
         }
     }
 }
