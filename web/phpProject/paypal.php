@@ -7,6 +7,20 @@
 
 	use phpProject\DataLayer\DbBase;
 	use phpProject\DataLayer\DbRead;
+
+	use PayPal\Api\Amount;
+	use PayPal\Api\Details;
+	use PayPal\Api\FundingInstrument;
+	use PayPal\Api\Item;
+	use PayPal\Api\ItemList;
+	use PayPal\Api\Payer;
+	use PayPal\Api\Payment;
+	use PayPal\Api\PaymentCard;
+	use PayPal\Api\Transaction;
+
+	$ppClient = getenv("PAYPAL_CLIENT");
+	$ppSecret = getenv("PAYPAL_SECRET");
+
 ?>
 
 <!DOCTYPE html>
@@ -67,6 +81,8 @@
 									<div class="form-group" title="Search" style="text-align: left;">
 										<label class="control-label">Search</label>
 										<input id="Search" class="form-control text-box single-line" name="Search" placeholder="Search" title="Search" value="" type="text">
+										<?php echo $ppClient; ?>
+										<?php echo $ppSecret; ?>
 										<br />
 									</div>
 									<div class="form-group">

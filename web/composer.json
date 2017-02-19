@@ -20,7 +20,9 @@
     "autoload": {
         "psr-0": {
             "PayPal": "lib/",
-            "DataLayer": "web/phpProject/DataLayer/"
+            "DataLayer": "web/phpProject/DataLayer/",
+            "Models": "web/phpProject/Models/",
+			"Helpers": "web/phpProject/Helpers"
         }
     }
 }

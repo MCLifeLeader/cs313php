@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite6efea143711237b392c270f634c28e6
+class ComposerStaticInit1ebceec902094e0ae4cb29bc876f96dd
 {
     public static $prefixLengthsPsr4 = array (
         'P' => 
@@ -25,7 +25,7 @@ class ComposerStaticInite6efea143711237b392c270f634c28e6
         array (
             'PayPal' => 
             array (
-                0 => __DIR__ . '/../..' . '/lib',
+                0 => __DIR__ . '/../..' . '/web/lib',
             ),
         ),
         'M' => 
@@ -54,9 +54,9 @@ class ComposerStaticInite6efea143711237b392c270f634c28e6
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite6efea143711237b392c270f634c28e6::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite6efea143711237b392c270f634c28e6::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInite6efea143711237b392c270f634c28e6::$prefixesPsr0;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit1ebceec902094e0ae4cb29bc876f96dd::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit1ebceec902094e0ae4cb29bc876f96dd::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit1ebceec902094e0ae4cb29bc876f96dd::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }
