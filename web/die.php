@@ -19,7 +19,7 @@
 		<meta name="Rating" content="General" />
 		
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" /> 		
-		<script src="scripts/jquery-3.1.1.min.js"></script>
+		<script src="scripts/jquery.min.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<script src="scripts/main.js"></script>
 		

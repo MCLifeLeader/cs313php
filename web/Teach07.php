@@ -71,7 +71,7 @@
 <html lang="en">
   <head>
     <title>Sign In</title>
-    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="scripts/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="scripts/main.js"></script>
 
